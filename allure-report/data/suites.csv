@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","41448","Client App login Zara Coat 3","","2025-12-31","broken","2025-12-31","","demotopom.spec.js","",""
+"","4477","Client App login undefined","","2025-12-31","failed","2025-12-31","","demotopom.spec.js","",""
