@@ -16,11 +16,11 @@ export default defineConfig({
   testDir: './tests',
   //retries:1,
   workers:1,
-  retries:1,
+  retries:0,
   timeout: 40*1000,//-->this it an timeout for elements,by giving this it can applied to entire project level
   
   expect:{
-timeout: 40*1000,//this is for assertion timeouts
+timeout: 5*1000,//this is for assertion timeouts
   },
   reporter: 'html',
   
@@ -28,13 +28,27 @@ timeout: 40*1000,//this is for assertion timeouts
          browserName : 'chromium',
          headless : false,
          screenshot: 'on',
-         trace: 'retry-with-trace' ,//'retain-on-failure',
-         viewport:{width:720,height:720},
+         trace: 'on-first-retry' ,//'retain-on-failure',
+         viewport:{width:1920,height:1080},
          ignoreHTTPSErrors:true,
          video:'retain-on-failure',
+         actionTimeout: 15 * 1000,      // click(), fill(), etc.
+        navigationTimeout: 30 * 1000,  // page.goto(), reload()
          
     
   },
+  // projects:[
+  //   {
+  //     name:'chromium',
+  //     use: { ...devices['Desktop Chrome'] },
+  //   },
+
+  //   {
+  //     name:'firefox',
+  //     use: { ...devices['Desktop Chrome'] },
+  //   }
+  // ]
+  
   });
 
   /* Configure projects for major browsers */

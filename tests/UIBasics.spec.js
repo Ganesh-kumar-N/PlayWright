@@ -4,7 +4,7 @@ const {test, expect}=require('@playwright/test');
 
 test.describe.configure({mode:'parallel'});//this will hep to run the multiple tests in parallel of a same file
 
-test('@Web Browser context Playwrighttest',async ({browser})=>
+test('@smoke Browser context Playwrighttest',async ({browser})=>
      {
     //chrome-plugins/cookies
     //follow line is for creation/open for browser in background
@@ -12,10 +12,10 @@ test('@Web Browser context Playwrighttest',async ({browser})=>
     //follow code will help to create a new page on the selective browser.
      const page= await context.newPage();
      //openong url
-     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+     await page.goto("https://www.amazon.in/");//https://rahulshettyacademy.com/loginpagePractise/
 })
 
-test.only('@UI First Playwrighttest',async ({browser,page})=>
+test.skip('@UI First Playwrighttest',async ({browser,page})=>
      {
     //we donot require brower.newContext and new page-->by default playwright will automatically
     //make them avaiable if we do async({browser,page})
@@ -42,7 +42,7 @@ test.only('@UI First Playwrighttest',async ({browser,page})=>
     //await expect(page.locator("[style*='block']")).toContainText('Incorrect username/password');
 })
 
-test('child window handtest',async ({browser})=>
+test.only('child window handtest',async ({browser})=>
      {
     const context =await browser.newContext();
     const page = await context.newPage();
@@ -51,6 +51,7 @@ test('child window handtest',async ({browser})=>
 
 const [newpage]=await Promise.all([
      context.waitForEvent('page'),
+     await page.pause(),
      blinktitle.click(),
 ])
 
@@ -61,9 +62,17 @@ const arrayText = text.split("@")
     //console.log(domain);
     await page.locator("#username").fill(domain);
     console.log(await page.locator("#username").inputValue());
+    await newpage.close();
+    await page.bringToFront();
+
+  // Continue working on parent page
+  await page.locator('#username').fill('rahulshettyacademy');
+  await page.locator('#password').fill('learning');
+
 })
 
-test('Flipcart Playwrighttest',async ({browser,page})=>
+
+test.skip('Flipcart Playwrighttest',async ({browser,page})=>
      {
     //we donot require brower.newContext and new page-->by default playwright will automatically
     //make them avaiable if we do async({browser,page})
@@ -75,7 +84,7 @@ test('Flipcart Playwrighttest',async ({browser,page})=>
     await page.pause();
 })
 
-test('practise',async ({browser,page})=>
+test.skip('practise',async ({browser,page})=>
      {
     //we donot require brower.newContext and new page-->by default playwright will automatically
     //make them avaiable if we do async({browser,page})

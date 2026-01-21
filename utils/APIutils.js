@@ -12,7 +12,7 @@ class APIutils {
         const token = loginResponseJson.token;
         console.log(token);
         return token;
-    }
+    } 
  
     async createOrder(orderPayLoad) {
         let response = {};

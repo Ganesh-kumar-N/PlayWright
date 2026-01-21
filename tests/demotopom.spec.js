@@ -14,6 +14,7 @@ for(const data of dataset ){
      const products = page.locator(".card-body");
      const loginPage = poManager.getLoginPage();
      await loginPage.goto();
+      await loginPage.goto();
      await loginPage.validlogin(data.username,data.password);
      const dashboardPage = poManager.getDashboardPage();
      await dashboardPage.searchproduct(data.productName);
