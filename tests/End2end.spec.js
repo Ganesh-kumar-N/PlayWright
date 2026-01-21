@@ -1,12 +1,12 @@
 const {test, expect}=require('@playwright/test');
-test('practise',async ({browser,page})=>
+test('@smoke practise',async ({browser,page})=>
      {
     //we donot require brower.newContext and new page-->by default playwright will automatically
     //make them avaiable if we do async({browser,page})
      const email = "hfufbeu@gmail.com";
    const productName = 'ZARA COAT 3';
    const products = page.locator(".card-body");
-   await page.goto("https://rahulshettyacademy.com/client");
+   await page.goto("https://www.flipkart.com/");//https://rahulshettyacademy.com/client
    await page.locator("#userEmail").fill(email);
    await page.locator("#userPassword").fill("Password@789");
    await page.locator("[value='Login']").click();

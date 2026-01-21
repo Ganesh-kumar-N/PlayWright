@@ -15,6 +15,7 @@ test('upated locators by getbyrole',async ({browser,page})=>
    
    await page.locator(".card-body").filter({hasText:"ZARA COAT 3"})
    .getByRole("button",{name:"Add to Cart"}).click();
+   //await page.$('').click();
  
    await page.getByRole("listitem").getByRole('button',{name:"Cart"}).click();
  

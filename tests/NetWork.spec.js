@@ -7,7 +7,7 @@ const fakePayLoadOrders = { data: [], message: "No Orders" };
 let response;
 test.beforeAll(async () => {
   const apiContext = await request.newContext();
-  const apiUtils = new APiUtils(apiContext, loginPayLoad);
+  const apiUtils = new APIutils(apiContext, loginPayLoad);
   response = await apiUtils.createOrder(orderPayLoad);
  
 })
