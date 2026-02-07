@@ -52,7 +52,7 @@ test.only('child window handtest',async ({browser})=>
 const [newpage]=await Promise.all([
      context.waitForEvent('page'),
      await page.pause(),
-     blinktitle.click(),
+     blinktitle.click()
 ])
 
 const text= await newpage.locator(".red").textContent();
