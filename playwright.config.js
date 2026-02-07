@@ -1,6 +1,11 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
 
+
+dotenv.config({
+  path:`config/.env.${process.env.TEST_ENV}`
+})
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -13,19 +18,24 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  //globalSetup:require.resolve('./auth.setup.js'),
   testDir: './tests',
   //retries:1,
-  workers:1,
+  workers:2,
   retries:0,
   timeout: 40*1000,//-->this it an timeout for elements,by giving this it can applied to entire project level
   
   expect:{
 timeout: 5*1000,//this is for assertion timeouts
   },
-  reporter: 'html',
+  reporter: [
+  ['html'],
+  ['allure-playwright']
+],
   
   use: {
          browserName : 'chromium',
+         
          headless : false,
          screenshot: 'on',
          trace: 'on-first-retry' ,//'retain-on-failure',
